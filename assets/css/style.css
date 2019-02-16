@@ -1,3 +1,79 @@
+
+body{
+
+background-color: grey;
+}
+
+.container{
+
+    height:300px;
+    width: 1000px;
+    position: absolute;
+    top:50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    background: rgba(255,255,255,0.5);
+    padding: 20px;
+    border: 1px solid lightpink;
+    box-shadow: 0 0 8px 3px white;
+}
+
+#game{
+    display: none;
+}
+
+h1{
+    padding-top: 20px;
+    text-align: center;
+    font-size: 35px;
+    color:royalblue;
+}
+
+h2{
+    padding-top: 20px;
+    text-align: center;
+    font-size: 35px;
+    text-transform: uppercase;
+    color: black;
+}
+
+.question{
+    padding: 20px;
+    font-size: 22px;
+    background: greenyellow;
+    border-radius: 18px;
+    margin: 50px 0 50px 0;
+    
+}
+
+.option{
+    width: 400px;
+    display: inline-block;
+    padding: 10px 5px 10px 5px;
+    vertical-align: middle;
+    background: lightpink;
+    margin: 10px 0 10px 0;
+    color: aquamarine;
+    border-radius: 18px;
+}
+
+.option:hover{
+    background: palevioletred;
+    color: #f6f6f6;
+}
+
+#startButton{
+    position: absolute;
+    left: 50%;
+    background-color: pink;
+
+}
+
+h3{
+    position: absolute;
+    left: 50%;
+}
+
 ul{
     list-style: none;
 }

@@ -22,11 +22,48 @@
 
     </div>
    
-    <div id="game" class="hidden">
+     <div id="game" class="container"> 
 
-            <h3>Timer: <span class="timer">0</span> </h3>
-            <ul class="question">
-            <li>Who is the oldest Kardashian/Jenner sister?</li>
+            <h3>Timer: <span class="timer">40</span> </h3>
+            <div id="question" class="question">            </div>
+            <label class="option"><input type="radio" name="option" value="1"/><span id="opt1"> </span></label>
+            <label class="option"><input type="radio" name="option" value="2"/><span id="opt2"> </span></label>
+            <label class="option"><input type="radio" name="option" value="3"/><span id="opt3"> </span></label>
+            <label class="option"><input type="radio" name="option" value="4"/><span id="opt4"> </span></label>
+        </div> 
+
+    <div class="hidden" id="results">
+            <h2>Out of Time</h2>
+            <ul>
+                <li>Correct Answers: <span class="correct"></span> </li>
+                <li>Wrong Answers: <span class="wrong"></span>  </li>
+                <li>Unanswered: <span class="unanswered"></span>  </li>
+    
+            </ul>
+    
+        </div>
+
+
+
+    
+
+        
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+
+    <script type="text/javascript" src="assets/javascript/app.js"></script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+            <!-- <ul class="question"> -->
+            <!-- <li>Who is the oldest Kardashian/Jenner sister?</li>
             <li><label><input type="checkbox"><span> Kim</span></label></li>
             <li><label><input type="checkbox"><span> Kourtney </span></label></li>
             <li><label><input type="checkbox"><span> Khloe</span></label></li>
@@ -50,23 +87,4 @@
                     <li><label><input type="checkbox"><span> San Diego, CA </span></label></li>
                     <li><label><input type="checkbox"><span> Calabasas, CA </span></label></li>
         
-                </ul>
-
-    </div>
-
-    <div class="hidden" id="results">
-        <h2>Out of Time</h2>
-        <ul>
-            <li>Correct Answers: <span class="correct">0</span> </li>
-            <li>Wrong Answers: <span class="wrong">0</span>  </li>
-            <li>Unanswered: <span class="unanswered"> 0 </span>  </li>
-
-        </ul>
-
-    </div>
-        
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
-
-    <script type="text/javascript" src="assets/javascript/app.js"></script>
-</body>
-</html>
+                </ul> -->
