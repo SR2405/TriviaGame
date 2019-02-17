@@ -8,47 +8,38 @@
 
     <link rel="stylesheet" type="text/css" href="assets/css/style.css">
 
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    
 
 </head>
 <body>
-    <h2>Keeping Up with the Trivia</h2>
-    <div id="startMessage">
-            <h1>Can you Keep Up?</h1>
-            <button id="startButton">Start Game</button>
 
-    </div>
-   
-     <div id="game" class="container"> 
-
-            <h3>Timer: <span class="timer">40</span> </h3>
-            <div id="question" class="question">            </div>
-            <label class="option"><input type="radio" name="option" value="1"/><span id="opt1"> </span></label>
-            <label class="option"><input type="radio" name="option" value="2"/><span id="opt2"> </span></label>
-            <label class="option"><input type="radio" name="option" value="3"/><span id="opt3"> </span></label>
-            <label class="option"><input type="radio" name="option" value="4"/><span id="opt4"> </span></label>
-        </div> 
-
-    <div class="hidden" id="results">
-            <h2>Out of Time</h2>
-            <ul>
-                <li>Correct Answers: <span class="correct"></span> </li>
-                <li>Wrong Answers: <span class="wrong"></span>  </li>
-                <li>Unanswered: <span class="unanswered"></span>  </li>
-    
-            </ul>
-    
-        </div>
-
-
-
-    
-
+    <div id="container">  
+        <div id="start">Start Trivia!</div>
+        <div id="quiz" style = "display: none">
+            <div id="question"> </div>
+            <div id="choices">
+                <div class="choice" id="A" onclick="checkAnswer('A')">A</div>
+                <div class="choice" id="B" onclick="checkAnswer('B')">B</div>
+                <div class="choice" id="C" onclick="checkAnswer('C')">C</div>
+                <div class="choice" id="D" onclick="checkAnswer('D')">D</div>
         
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+            </div>
+            <div id="timer">
+                <div id="counter">  </div>
+                <div id="btimeGauge"></div>
+                <div id="timeGauge"></div>
+
+            </div>
+         <div id="progress"></div>
+    </div>
+    <div id="scoreContainer" style ="display:none"></div>
+    <div id="correct" style ="display:none"> Correct Answers:<span id="correctScore">0</span></div>
+    <div id="wrong" style ="display:none"> Wrong Answers:<span id="wrongScore">0</span></div>
+    <div id="unanswered" style ="display:none"> Unanswered:<span id="unansweredScore">0</span></div>
+
+
+
+    </div>  
 
     <script type="text/javascript" src="assets/javascript/app.js"></script>
 </body>
@@ -59,32 +50,3 @@
 
 
 
-
-
-
-            <!-- <ul class="question"> -->
-            <!-- <li>Who is the oldest Kardashian/Jenner sister?</li>
-            <li><label><input type="checkbox"><span> Kim</span></label></li>
-            <li><label><input type="checkbox"><span> Kourtney </span></label></li>
-            <li><label><input type="checkbox"><span> Khloe</span></label></li>
-            <li><label><input type="checkbox"><span> Kylie</span></label></li>
-
-        </ul>
-
-        <ul class="question">
-                <li>Who is Chicago?</li>
-                <li><label><input type="checkbox"><span> Khoe's Daughter</span></label></li>
-                <li><label><input type="checkbox"><span> Kourtney's Son </span></label></li>
-                <li><label><input type="checkbox"><span> Kim's Daughter </span></label></li>
-                <li><label><input type="checkbox"><span> Kylie's Son </span></label></li>
-    
-            </ul>
-
-            <ul class="question">
-                    <li>Where does most of the Kardashian/Jenner family live?</li>
-                    <li><label><input type="checkbox"><span> South Beach, FL </span></label></li>
-                    <li><label><input type="checkbox"><span> Manhattan, NY </span></label></li>
-                    <li><label><input type="checkbox"><span> San Diego, CA </span></label></li>
-                    <li><label><input type="checkbox"><span> Calabasas, CA </span></label></li>
-        
-                </ul> -->

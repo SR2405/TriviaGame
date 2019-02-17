@@ -1,180 +1,194 @@
-
-$(".correct").addClass("correct");
-$(".wrong").addClass("wrong");
-$(".unanswered").addClass("unanswered");
-$(".hidden").addClass("hiddenQuestions"); //might not need CHECK
-$(".timer").addClass("timer");
-
-$(".opt1").addClass("opt1");
-$(".opt2").addClass("opt2");
-$(".opt3").addClass("opt3");
-$(".opt4").addClass("opt4");
-$(".container").addClass("triviaContainer");
-
-
-var questionElem = document.getElementById('question');
-var currentQuestion = 0;
-
-
-// $("#game").getElementById("gameQuestions");
-// $("#startButton").getElementById("button");
-
-var correct;
-var wrong;
-unanswered= 0;
-timer = 20;
-
-var timeLeft;
-var UserAnswer;
+//select all the elements
+const start = document.getElementById("start");
+const quiz = document.getElementById("quiz");
+const question = document.getElementById("question");
+const choiceA = document.getElementById("A");
+const choiceB = document.getElementById("B");
+const choiceC = document.getElementById("C");
+const choiceD = document.getElementById("D");
+const counter = document.getElementById("counter");
+const timeGauge = document.getElementById("timeGauge");
+const progress = document.getElementById("progress");
+const scoreDiv = document.getElementById("scoreContainer");
+const correctDiv = document.getElementById("correct");
+const wrongDiv = document.getElementById("wrong");
+const unansweredDiv = document.getElementById("unanswered");
 
 
-var questions =[{
-   "question": "What colors are the clouds?",
-   "option1": "green",
-    "option2": "blue",
-    "option3": "black",
-    "option4": "white",
-    "answer": "4"
-    
-        },
 
-        {"question":  "What colors are  bananas? ",
-      
-        "option1": "green",
-            "option2": "blue",
-            "option3": "yellow",
-            "option4": "white",
-            "answer": "3"
-        
-            },
-
-            {"question": "What colors are oranges? ",
+//create questions
+var questions = [
+    {
+    question: "What colors are the clouds?",
+    choiceA: "green",
+     choiceB: "blue",
+     choiceC: "black",
+     choiceD: "white",
+     correct: "D"
+     
+         },
+ 
+         {
+        question:  "What colors are  bananas? ",
+         choiceA: "green",
+         choiceB: "blue",
+         choiceC: "yellow",
+         choiceD: "white",
+         correct: "C"
          
-            "option1": "orange",
-            "option2": "blue",
-            "option3": "yellow",
-            "option4": "white",
-                "answer": "1"
-            
-        },   
-        ]
-        var questionsCount = questions.length;
-
-        function loadQuestion (questionIndex){
-            var q = questions[questionIndex];
-            questionElem.textContent = (questionIndex + 1) +'. ' + q.question;
-            opt1.textContent = q.option1;
-            opt2.textContent = q.option2;
-            opt3.textContent = q.option3;
-            opt4.textContent = q.option4;
-
-            console.log("hello");
-        };
-        
-        document.getElementById("startButton").onclick = function Start(){
-
-            $("#startButton").click(function(){
-                $("#game").show() && $("#startMessage").hide();
-    
-                timeLeft = setInterval(decrement,1000);
-                // clearInterval(timeLeft);
-                    loadQuestion(currentQuestion);
-
-                    var selectedOption = document.querySelector('input [type=radio]:checked');
-    if (!selectedOption) {
-        unanswered++;
-        // $(".unanswered").html(unanswered);
-
-        console.log("no answer!");
-    }    
-    
-                // for (var i=0;i<questionsArr.length;i++) 
-            })
+             },
+ 
+             {
+            question: "What colors are oranges? ",
+             choiceA: "blue",
+             choiceB: "orange",
+             choiceC: "yellow",
+             choiceD: "white",
+            correct: "B"
              
-        };
-function loadNextQuestion (){
-    var selectedOption = document.querySelector('input [type=radio]:checked');
-    if (!selectedOption) {
-        unanswered++;
+         },   
+         ]
 
+
+
+const lastQuestion = questions.length-1;
+var runningQuestion = 0;
+var count = 0;
+const questionTime = 10;
+const gaugeWidth = 150;
+const gaugeUnit = gaugeWidth / questionTime;
+var TIMER;
+var score = 0;
+var correct = 0;
+var wrong = 0;
+var unanswered= 0;
+
+//render a question
+function renderQuestion(){
+
+    var q = questions[runningQuestion];
+    question.innerHTML = "<p>"+ q.question + "</p>";
+    choiceA.innerHTML = q.choiceA;
+    choiceB.innerHTML = q.choiceB;
+    choiceC.innerHTML = q.choiceC;
+    choiceD.innerHTML = q.choiceD;
+}
+
+start.addEventListener("click", startQuiz);
+
+// runningQuestionIndex++
+// renderQuestion()
+
+//start Trivia
+
+function startQuiz(){
+    start.style.display = "none";
+    renderQuestion();
+    quiz.style.display ="block";
+    renderProgress();
+    renderCounter();
+    TIMER = setInterval(renderCounter,1000);
+
+}
+
+
+//render progress
+function renderProgress(){
+    for(var qIndex = 0; qIndex<= lastQuestion; qIndex++){
+        progress.innerHTML += "<div class='prog' id=" + qIndex +"></div>";
     }
-    var answer = selectedOption.value;
-    if(questions[currentQuestion].answer == answer){
-        correct++;
+}
+
+
+//render counter
+function renderCounter(){
+    if( count <= questionTime){
+        counter.innerHTML = count;
+        timeGauge.style.width = count  * gaugeUnit + "px";
+        count++
+
+    } else {
+        count = 0;
+
+        answerIsWrong();
+        if(runningQuestion < lastQuestion){
+            runningQuestion++;
+            renderQuestion();
+        }
+        else{
+            clearInterval(TIMER);
+            scoreRender(); 
+        }
     }
+
+}
+
+//check answer
+function checkAnswer (answer){
+    if(answer == questions[runningQuestion].correct){
+        score++;
+        answerIsCorrect();
+    }
+    else{
+        answerIsWrong();
+    }
+    count= 0;
+    if (runningQuestion < lastQuestion){
+        runningQuestion++;
+        renderQuestion();
+    }
+    else{
+        clearInterval(TIMER);
+        scoreRender();
+    }
+}
+
+//check if answer is correct
+function answerIsCorrect(){
+    document.getElementById(runningQuestion).style.backgroundColor = "#0f0";
+    correct++;
+}
+
+
+//check if answer is wrong
+function answerIsWrong(){
+    document.getElementById(runningQuestion).style.backgroundColor = "#f00";
+   
+    if (count == 0){
+        unanswered++;}
     else{
         wrong++;
     }
-    selectedOption.checked = false;
-    currentQuestion++;
-    if(currentQuestion == questionsCount -1){
-        $(".results").show();
-    }
-    // loadQuestion(currentQuestion);
-};
 
-//create homepage with title and start button
-function Start(){
-    //onclick start the game
+
+    console.log(unanswered);
+    }
+
+
+
+
+function scoreRender(){
+    scoreDiv.style.display = "block";
+    const scorePerCent = Math.round(100 * score/questions.length);
+
+    scoreDiv.innerHTML += "<p>"+ scorePerCent +"%</p>";
+   
+    correctDiv.style.display = "inline";
+    wrongDiv.style.display = "inline";
+    unansweredDiv.style.display = "inline";
+
+
+    // correctDiv.innerHTML +="<p>" + correct + "</p>";
+    // wrongDiv.innerHTML += "<p>" + wrong + "</p>";
+    // unansweredDiv.innerHTML += "</p>" + unanswered + "</p>"; 
+
+    document.getElementById("correctScore").innerHTML = correct;
+    document.getElementById("wrongScore").innerHTML = wrong;
+    document.getElementById("unansweredScore").innerHTML = unanswered;
+
 
 }
-            function decrement(){
-                timer--;
-                $(".timer").html(timer);
 
-                
-                if (timer===0){
-                    clearInterval(timeLeft);
-                    $("#game").hide() && $("#results").show();
+// var TIMER=
+// setInterval(renderCounter,1000);
 
-            }
-
-
-        // }
-
-        // console.log(decrement);
-    }
-           
-
-
-
-            // setTimeout(function(){
-            //     $("#game").hide() && $("#results")
-
-            //     // $(".timer").value("40");
-            // },40000)
-        
-
-
-        
-
-       
-
-//unhide questions
-    //set timer 40 sec
-
-
-   Start();
-    
-
-
-
-
-//when user clicks "Start" the game starts
-    //hide Everything else
-//set timer to 40 sec 
-//show all the questions and answers
-    //give the questions and 4 options
-//the user can choose and click one option only
-
-//if answer is correct 
-    //save to a var "Correct Answers"
-
-//if answer is wrong say "Wrong"
-    //save to a var "Wrong Answers"
-
-    //when the clock goes to 0 
-    // alert "Time Out"
-    // save all unanswered questions  a var to "unanswered"
-    // show "results" page
-    // show the results from the "unanswered" "Wrong Answers" "Correct Answers
