@@ -11,12 +11,15 @@
     
 
 </head>
-<body>
+<body background="assets/images/KUWTK.jpg">
 
     <div id="container">  
-        <div id="start">Start Trivia!</div>
+        <div id="start" class="glow">
+            <p>Kan you Keep Up? </p>
+     <p> Start Trivia! </p> 
+    </div>
         <div id="quiz" style = "display: none">
-            <div id="question"> </div>
+            <div id="question" class="glow"> </div>
             <div id="choices">
                 <div class="choice" id="A" onclick="checkAnswer('A')">A</div>
                 <div class="choice" id="B" onclick="checkAnswer('B')">B</div>
@@ -32,11 +35,10 @@
             </div>
          <div id="progress"></div>
     </div>
-    <div id="scoreContainer" style ="display:none"></div>
+    <div id="scoreContainer" style ="display:none"> </div>
     <div id="correct" style ="display:none"> Correct Answers:<span id="correctScore">0</span></div>
     <div id="wrong" style ="display:none"> Wrong Answers:<span id="wrongScore">0</span></div>
     <div id="unanswered" style ="display:none"> Unanswered:<span id="unansweredScore">0</span></div>
-
 
 
     </div>  

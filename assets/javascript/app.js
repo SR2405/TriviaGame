@@ -19,34 +19,54 @@ const unansweredDiv = document.getElementById("unanswered");
 //create questions
 var questions = [
     {
-    question: "What colors are the clouds?",
-    choiceA: "green",
-     choiceB: "blue",
-     choiceC: "black",
-     choiceD: "white",
+    question: "Who is the oldest sister?",
+    choiceA: "Kim",
+     choiceB: "Khloe",
+     choiceC: "Kylie",
+     choiceD: "Kourtney",
      correct: "D"
      
          },
  
          {
-        question:  "What colors are  bananas? ",
-         choiceA: "green",
-         choiceB: "blue",
-         choiceC: "yellow",
-         choiceD: "white",
+        question:  "Who is Chicago?",
+         choiceA: "Kim's son",
+         choiceB: "Kylie's son",
+         choiceC: "Kim's daughter",
+         choiceD: "Khloe's daughter",
          correct: "C"
          
              },
  
              {
-            question: "What colors are oranges? ",
-             choiceA: "blue",
-             choiceB: "orange",
-             choiceC: "yellow",
-             choiceD: "white",
+            question: "Where does most of the family live? ",
+             choiceA: "Miami, FL",
+             choiceB: "Calabasas, CA",
+             choiceC: "Las Vegas, NV",
+             choiceD: "New York City",
             correct: "B"
              
-         },   
+         },  
+
+         {
+            question: "Who walked on the last Victoria Secret Fashion Show? ",
+             choiceA: "Khloe",
+             choiceB: "Kim",
+             choiceC: "Kylie",
+             choiceD: "Kendall",
+            correct: "D"
+             
+         },  
+         
+         {
+            question: "Who owns a beauty company? ",
+             choiceA: "Kylie & Kim",
+             choiceB: "Kim & Kendall",
+             choiceC: "Kylie & Khloe",
+             choiceD: "Kylie & Kendall",
+            correct: "A"
+             
+         }, 
          ]
 
 
@@ -161,7 +181,6 @@ function answerIsWrong(){
     }
 
 
-    console.log(unanswered);
     }
 
 
@@ -171,16 +190,13 @@ function scoreRender(){
     scoreDiv.style.display = "block";
     const scorePerCent = Math.round(100 * score/questions.length);
 
-    scoreDiv.innerHTML += "<p>"+ scorePerCent +"%</p>";
+    scoreDiv.innerHTML += "<p>"+ "YOUR SCORE IS:" + scorePerCent +"%</p>";
    
     correctDiv.style.display = "inline";
     wrongDiv.style.display = "inline";
     unansweredDiv.style.display = "inline";
 
 
-    // correctDiv.innerHTML +="<p>" + correct + "</p>";
-    // wrongDiv.innerHTML += "<p>" + wrong + "</p>";
-    // unansweredDiv.innerHTML += "</p>" + unanswered + "</p>"; 
 
     document.getElementById("correctScore").innerHTML = correct;
     document.getElementById("wrongScore").innerHTML = wrong;
@@ -189,6 +205,4 @@ function scoreRender(){
 
 }
 
-// var TIMER=
-// setInterval(renderCounter,1000);
 
