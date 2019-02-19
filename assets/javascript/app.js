@@ -13,6 +13,7 @@ const scoreDiv = document.getElementById("scoreContainer");
 const correctDiv = document.getElementById("correct");
 const wrongDiv = document.getElementById("wrong");
 const unansweredDiv = document.getElementById("unanswered");
+const button = document.getElementById("button");
 
 
 
@@ -95,6 +96,8 @@ function renderQuestion(){
 }
 
 start.addEventListener("click", startQuiz);
+
+button.addEventListener("click", reStartQuiz);
 
 // runningQuestionIndex++
 // renderQuestion()
@@ -184,6 +187,7 @@ function answerIsWrong(){
     }
 
 
+    
 
 
 function scoreRender(){
@@ -191,6 +195,9 @@ function scoreRender(){
     const scorePerCent = Math.round(100 * score/questions.length);
 
     scoreDiv.innerHTML += "<p>"+ "YOUR SCORE IS:" + scorePerCent +"%</p>";
+
+    button.style.display = "block";
+
    
     correctDiv.style.display = "inline";
     wrongDiv.style.display = "inline";
@@ -202,7 +209,45 @@ function scoreRender(){
     document.getElementById("wrongScore").innerHTML = wrong;
     document.getElementById("unansweredScore").innerHTML = unanswered;
 
+    // restart.addEventListener("click", startQuiz);
+
+    // reStart();
 
 }
+
+function reStartQuiz(){
+    scoreDiv.style.display = "none";
+    scoreDiv.innerHTML = "";
+    button.style.display = "none";
+    correctDiv.style.display = "none";
+    wrongDiv.style.display = "none";
+    unansweredDiv.style.display = "none";
+
+    progress.innerHTML = "";
+    runningQuestion=0;
+
+    startQuiz();
+
+
+
+
+    // if(document.getElementById("button").clicked === true)
+
+
+}
+
+
+               
+//         currentScore += crystal1;
+//         console.log(currentScore);
+
+//     $(".currentScore").html( currentScore);
+        
+
+//         Win();
+//         Lost();
+   
+//     }); }
+
 
 

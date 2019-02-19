@@ -215,5 +215,18 @@ body{
 }
 
 
-
+#button{
+    font-size: 26px;
+    font-weight: bold;
+    word-break: break-all;
+    width:400px;
+    height:50px;
+    text-align: center;
+    padding: 10px; 
+    cursor: pointer;
+    position: absolute;
+    left:180px;
+    top:200px;
+    color : black;
+}
 
